@@ -119,4 +119,4 @@ dist
 .idea
 
 # local
-storage/*
+public/*

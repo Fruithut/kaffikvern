@@ -8,7 +8,7 @@ import fetchAndStoreCoffee from './lib/fetching/coffee_fetcher.js';
 // Startup fetch
 await fetchAndStoreCoffee();
 
-const fetchCoffeJob = schedule.scheduleJob('0 * * * *', fetchAndStoreCoffee);
+schedule.scheduleJob('0 * * * *', fetchAndStoreCoffee);
 
 const app = new Koa();
 app.use(cors());

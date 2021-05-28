@@ -5,6 +5,8 @@ import sparStrategy from './strategies/spar_strategy.js';
 import menyStrategy from './strategies/meny_strategy.js';
 import coopStrategy from './strategies/coop_strategy.js';
 import europrisStrategy from './strategies/europris_strategy.js';
+import {Product} from "../../types/Product";
+import {Dataset} from "../../types/Dataset";
 
 export default async function fetchAndStoreCoffee() {
     console.log("Fetching fresh data ☕");
@@ -18,27 +20,25 @@ export default async function fetchAndStoreCoffee() {
 
     await browser.close();
 
-    let flattenedData = products.flat();
+    const flattenedData: Product[] = products.flat();
 
     console.log("Storing new dataset...");
     storeDataset(flattenedData, 'products');
 
-    console.log("Complete ✅")
+    console.log("Complete ✅");
 }
 
-function storeDataset(data, fileName) {
-    let dataset = {
+
+function storeDataset(data: Product[], fileName: string) {
+    const dataset : Dataset = {
         timestamp: Date.now(),
         itemCount: data.length,
         dataset: data
     };
 
-    fs.writeFile(`./public/${fileName}.json`, JSON.stringify(dataset), (err, data) => {
-        if (err) {
-            return console.error(err);
-        }
-        console.log(data);
-    });
+    fs.writeFile(`./public/${fileName}.json`, JSON.stringify(dataset), (err => {
+        if (err) return console.error(err);
+    }));
 }
 
 

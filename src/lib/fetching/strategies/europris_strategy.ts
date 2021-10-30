@@ -14,7 +14,7 @@ async function fetchEuroprisCoffee(browser: Browser): Promise<Product[]>  {
         function textUnderElement(element: Element): string[] {
             let currentNode = null;
             let textElements : string[] | null = [];
-            let walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+            let walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
 
             while (currentNode = walk.nextNode()) {
                 if (currentNode.textContent){

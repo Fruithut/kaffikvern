@@ -1,3 +1,3 @@
-# "Kaffikvern"
+# "Kaffikvern" ☕
 
-Fetches coffee prices from norwegian vendors
+A small application for fetching and serving coffee prices from various norwegian vendors
